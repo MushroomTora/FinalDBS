@@ -1,3 +1,9 @@
+<?php
+if (!isset($database)) {
+    include_once('Database.php');
+    $database = new Database();
+}
+?>
   <div class="col-md-4">
 
           <!-- Search Widget -->
@@ -38,6 +44,22 @@ while($row=mysqli_fetch_array($query))
               </div>
             </div>
           </div>
+
+  <!-- Side Widget -->
+  <div class="card my-4 most-popular-post">
+      <h5 class="card-header">The Most Popular</h5>
+      <div class="card-body">
+          <ul class="mb-0">
+              <?php foreach ($database->getMostPopular() as $post) : ?>
+                  <li>
+                      <a href="news-details.php?nid=<?= htmlentities($post['id']) ?>">
+                          <?= htmlentities($post['PostTitle']); ?>
+                      </a>
+                  </li>
+              <?php endforeach; ?>
+          </ul>
+      </div>
+  </div>
 
           <!-- Side Widget -->
           <div class="card my-4">
