@@ -19,6 +19,11 @@ include('includes/config.php');
 
     <!-- Custom styles for this template -->
     <link href="css/modern-business.css" rel="stylesheet">
+      <link href="css/header.css" rel="stylesheet">
+      <script src="js/modernizr.custom.js"></script>
+      <link href=" plugins/fontAwsome/otfs/Font Awesome 5 Brands-Regular-400.otf">
+      <script src="https://kit.fontawesome.com/850f11ab6f.js" crossorigin="anonymous"></script>
+      <link href="css/component.css" rel="stylesheet">
 
   </head>
 
@@ -67,6 +72,12 @@ while($row=mysqli_fetch_array($query))
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/classie.js"></script>
+    <script src="js/uisearch.js"></script>
+    <script>
+        new UISearch(document.getElementById('sb-search'));
+    </script>
 
   </body>
 

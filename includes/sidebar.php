@@ -4,26 +4,10 @@ if (!isset($database)) {
     $database = new Database();
 }
 ?>
-  <div class="col-md-4">
-
-          <!-- Search Widget -->
-          <div class="card mb-4">
-            <h5 class="card-header">Search</h5>
-            <div class="card-body">
-                   <form name="search" action="search.php" method="post">
-              <div class="input-group">
-           
-        <input type="text" name="searchtitle" class="form-control" placeholder="Search for..." required>
-                <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="submit">Go!</button>
-                </span>
-              </form>
-              </div>
-            </div>
-          </div>
+  <div class="sideBar">
 
           <!-- Categories Widget -->
-          <div class="card my-4">
+          <div>
             <h5 class="card-header">Categories</h5>
             <div class="card-body">
               <div class="row">
@@ -46,7 +30,7 @@ while($row=mysqli_fetch_array($query))
           </div>
 
   <!-- Side Widget -->
-  <div class="card my-4 most-popular-post">
+  <div class="most-popular-post">
       <h5 class="card-header">The Most Popular</h5>
       <div class="card-body">
           <ul class="mb-0">
@@ -62,7 +46,7 @@ while($row=mysqli_fetch_array($query))
   </div>
 
           <!-- Side Widget -->
-          <div class="card my-4">
+          <div>
             <h5 class="card-header">Recent News</h5>
             <div class="card-body">
                       <ul class="mb-0">
@@ -80,4 +64,4 @@ while ($row=mysqli_fetch_array($query)) {
             </div>
           </div>
 
-        </div>
+        </div> 

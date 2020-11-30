@@ -36,83 +36,88 @@ if (isset($_POST['submit']) && !empty($_POST['csrftoken']) && hash_equals($_SESS
     <title>HandemadeTutorials | Home Page</title>
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/modern-business.css" rel="stylesheet">
+    <link href="css/component.css" rel="stylesheet">
+    <link href="css/header.css" rel="stylesheet">
+    <script src="js/modernizr.custom.js"></script>
+    <link href=" plugins/fontAwsome/otfs/Font Awesome 5 Brands-Regular-400.otf">
+    <script src="https://kit.fontawesome.com/850f11ab6f.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
 <!-- Navigation -->
 <?php include('includes/header.php'); ?>
 <!-- Page Content -->
 <div class="container">
-    <div class="row" style="margin-top: 4%">
-        <!-- Blog Entries Column -->
-        <div class="col-md-8">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h1 class="card-title"><?= htmlentities($post['PostTitle']) ?></h1>
-                    <p>
-                        <b>Category : </b>
-                        <a href="category.php?catid=<?= htmlentities($post['CategoryId']) ?>">
-                            <?= htmlentities($post['CategoryName']) ?>
-                        </a> |
-                        <b>Sub Category : </b><?= htmlentities($post['Subcategory']) ?> |
-                        <b>Posted on </b><?= htmlentities($post['PostingDate']) ?> |
-                        <?= $post['view'] . ' view(s)'?>
-                    </p>
-                    <hr/>
-                    <img class="img-fluid rounded"
-                         src="admin/postimages/<?= htmlentities($post['PostImage']) ?>"
-                         alt="<?= htmlentities($post['PostTitle']) ?>" />
-                    <p class="card-text"><?= $post['PostDetails'] ?></p>
-                </div>
-                <div class="card-footer text-muted"></div>
+    <div class="mainBody">
+    <div class="left">
+            <!-- Blog Entries Column -->
+            <div>
+                    <div class="card-body">
+                        <h1 class="card-title"><?= htmlentities($post['PostTitle']) ?></h1>
+                        <p>
+                            <b>Category : </b>
+                            <a href="category.php?catid=<?= htmlentities($post['CategoryId']) ?>">
+                                <?= htmlentities($post['CategoryName']) ?>
+                            </a> |
+                            <b>Sub Category : </b><?= htmlentities($post['Subcategory']) ?> |
+                            <b>Posted on </b><?= htmlentities($post['PostingDate']) ?> |
+                            <?= $post['view'] . ' view(s)'?>
+                        </p>
+                        <hr/>
+                        <img class="img-fluid rounded"
+                             src="admin/postimages/<?= htmlentities($post['PostImage']) ?>"
+                             alt="<?= htmlentities($post['PostTitle']) ?>" />
+                        <p class="card-text"><?= $post['PostDetails'] ?></p>
+                    </div>
+                    <div class="card-footer text-muted"></div>
             </div>
-        </div>
-        <!-- Sidebar Widgets Column -->
+        <!---Comment Section --->
+            <div class="commentWrapper">
+                <hr>
+                <!-- Comment  :::::::::::::::::::::::::::::::::::::::::::::::-->
+                <?php $comments = $database->getPostComment($postId) ?>
+                <?php foreach ($comments as $comment) : ?>
+                    <div class="commentContainer">
+                        <div class="commentHeader">
+                            <h5><?= htmlentities($comment['name']); ?></h5>
+                            <div class="commentDate"><?= htmlentities($comment['postingDate']); ?></div>
+                        </div>
+                        <p><?= htmlentities($comment['comment']); ?></p>
+                    </div>
+                <?php endforeach; ?>
+                <!-- END Comment  :::::::::::::::::::::::::::::::::::::::::::::::-->
+
+                <!-- Input Comment  :::::::::::::::::::::::::::::::::::::::::::::::-->
+                <form class="formWrapper" name="Comment" method="post">
+                    <input type="hidden" name="csrftoken" value="<?= htmlentities($_SESSION['token']); ?>"/>
+                    <input placeholder="Name" type="text" value="" name="name" required />
+                    <input placeholder="Email" type="text" value="" name="email" required />
+                    <textarea placeholder="Comment" type="text" value="" name="comment" required></textarea>
+
+                    <button class="commentButton" type="submit" name="submit">Send</button>
+                </form>
+
+                <!-- END Input Comment  :::::::::::::::::::::::::::::::::::::::::::::::-->
+
+            </div>
+    </div>
+
+    <div class="right">
         <?php include('includes/sidebar.php'); ?>
     </div>
-    <!-- /.row -->
-    <!---Comment Section --->
-
-    <div class="row" style="margin-top: -8%">
-        <div class="col-md-8">
-            <div class="card my-4">
-                <h5 class="card-header">Leave a Comment:</h5>
-                <div class="card-body">
-                    <form name="Comment" method="post">
-                        <input type="hidden" name="csrftoken" value="<?= htmlentities($_SESSION['token']); ?>"/>
-                        <div class="form-group">
-                            <input type="text" name="name" class="form-control" placeholder="Enter your fullname" required />
-                        </div>
-                        <div class="form-group">
-                            <input type="email" name="email" class="form-control" placeholder="Enter your Valid email" required />
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" name="comment" rows="3" placeholder="Comment" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
-                    </form>
-                </div>
-            </div>
-            <!---Comment Display Section --->
-            <?php $comments = $database->getPostComment($postId) ?>
-            <?php foreach ($comments as $comment) : ?>
-                <div class="media mb-4">
-                    <img class="d-flex mr-3 rounded-circle" src="images/usericon.png" alt="">
-                    <div class="media-body">
-                        <h5 class="mt-0"><?= htmlentities($comment['name']); ?> <br/>
-                            <span style="font-size:11px;"><b>at</b> <?= htmlentities($comment['postingDate']); ?></span>
-                        </h5>
-
-                        <?= htmlentities($comment['comment']); ?>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        </div>
     </div>
 </div>
+
+
 <?php include('includes/footer.php'); ?>
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script src="js/classie.js"></script>
+<script src="js/uisearch.js"></script>
+<script>
+    new UISearch(document.getElementById('sb-search'));
+</script>
+
 </body>
 </html>
