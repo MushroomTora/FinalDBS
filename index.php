@@ -39,10 +39,10 @@ include('includes/config.php');
 
 
      
-      <div class="row" style="margin-top: 4%">
+      <div class="mainBody">
 
         <!-- Blog Entries Column -->
-        <div class="col-md-8">
+        <div class="left">
 
           <!-- Blog Post -->
 <?php 
@@ -61,7 +61,7 @@ include('includes/config.php');
         $total_pages = ceil($total_rows / $no_of_records_per_page);
 
 
-$query=mysqli_query($con,"select tblposts.id as pid,tblposts.PostTitle as posttitle,tblposts.PostImage,tblcategory.CategoryName as category,tblcategory.id as cid,tblsubcategory.Subcategory as subcategory,tblposts.PostDetails as postdetails,tblposts.PostingDate as postingdate,tblposts.PostUrl as url from tblposts left join tblcategory on tblcategory.id=tblposts.CategoryId left join  tblsubcategory on  tblsubcategory.SubCategoryId=tblposts.SubCategoryId where tblposts.Is_Active=1 order by tblposts.id desc  LIMIT $offset, $no_of_records_per_page");
+$query=mysqli_query($con,"select tblposts.id as pid,tblposts.PostTitle as posttitle,tblposts.PostSubDes as postsubdes, tblposts.PostImage,tblcategory.CategoryName as category,tblcategory.id as cid,tblsubcategory.Subcategory as subcategory,tblposts.PostDetails as postdetails,tblposts.PostingDate as postingdate,tblposts.PostUrl as url from tblposts left join tblcategory on tblcategory.id=tblposts.CategoryId left join  tblsubcategory on  tblsubcategory.SubCategoryId=tblposts.SubCategoryId where tblposts.Is_Active=1 order by tblposts.id desc  LIMIT $offset, $no_of_records_per_page");
 while ($row=mysqli_fetch_array($query)) {
 ?>
 
@@ -70,7 +70,8 @@ while ($row=mysqli_fetch_array($query)) {
             <div class="card-body">
               <h2 class="card-title"><?php echo htmlentities($row['posttitle']);?></h2>
                  <p><b>Category : </b> <a href="category.php?catid=<?php echo htmlentities($row['cid'])?>"><?php echo htmlentities($row['category']);?></a> </p>
-       
+
+            <p><?php echo htmlentities($row['postsubdes']);?></p>
               <a href="news-details.php?nid=<?php echo htmlentities($row['pid'])?>" class="btn btn-primary">Read More &rarr;</a>
             </div>
             <div class="card-footer text-muted">
@@ -100,7 +101,10 @@ while ($row=mysqli_fetch_array($query)) {
         </div>
 
         <!-- Sidebar Widgets Column -->
-      <?php include('includes/sidebar.php');?>
+    <div class="right">
+        <?php include('includes/sidebar.php'); ?>
+    </div>
+
       </div>
       <!-- /.row -->
 

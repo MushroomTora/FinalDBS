@@ -68,7 +68,6 @@ if (isset($_POST['submit']) && !empty($_POST['csrftoken']) && hash_equals($_SESS
                              alt="<?= htmlentities($post['PostTitle']) ?>" />
                         <p class="card-text"><?= $post['PostDetails'] ?></p>
                     </div>
-                    <div class="card-footer text-muted"></div>
             </div>
         <!---Comment Section --->
             <div class="commentWrapper">
@@ -81,6 +80,7 @@ if (isset($_POST['submit']) && !empty($_POST['csrftoken']) && hash_equals($_SESS
                             <h5><?= htmlentities($comment['name']); ?></h5>
                             <div class="commentDate"><?= htmlentities($comment['postingDate']); ?></div>
                         </div>
+                        <p class="commentDate"><?= htmlentities($comment['email']); ?></p>
                         <p><?= htmlentities($comment['comment']); ?></p>
                     </div>
                 <?php endforeach; ?>

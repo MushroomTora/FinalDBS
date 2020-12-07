@@ -32,7 +32,7 @@
                 <hr class="border-line"/>
                 <div class="container">
                     <div class="subFooter">
-                        <div>Handmade Tutorial © 2020. All Rights Reserved. Click here for privacy policy.</div>
+                        <div>Handmade Tutorial © 2020. All Rights Reserved. Click here for <a href="https://policies.google.com/privacy?hl=en-US">privacy policy.</a></div>
                         <div>Powered by Wordpress. Designed by OurTeam.</div>
                     </div>
                 </div>

@@ -12,6 +12,7 @@ else{
 if(isset($_POST['submit']))
 {
 $posttitle=$_POST['posttitle'];
+$postsubdes=$_POST['postsubdes'];
 $catid=$_POST['category'];
 $subcatid=$_POST['subcategory'];
 $postdetails=$_POST['postdescription'];
@@ -35,7 +36,7 @@ $imgnewfile=md5($imgfile).$extension;
 move_uploaded_file($_FILES["postimage"]["tmp_name"],"postimages/".$imgnewfile);
 
 $status=1;
-$query=mysqli_query($con,"insert into tblposts(PostTitle,CategoryId,SubCategoryId,PostDetails,PostUrl,Is_Active,PostImage) values('$posttitle','$catid','$subcatid','$postdetails','$url','$status','$imgnewfile')");
+$query=mysqli_query($con,"insert into tblposts(PostTitle,PostSubDes, CategoryId,SubCategoryId,PostDetails,PostUrl,Is_Active,PostImage) values('$posttitle','$postsubdes','$catid','$subcatid','$postdetails','$url','$status','$imgnewfile')");
 if($query)
 {
 $msg="Post successfully added ";
@@ -166,6 +167,11 @@ function getSubCat(val) {
  <div class="form-group m-b-20">
 <label for="exampleInputEmail1">Post Title</label>
 <input type="text" class="form-control" id="posttitle" name="posttitle" placeholder="Enter title" required>
+</div>
+
+ <div class="form-group m-b-20">
+<label for="exampleInputEmail1">Post Description</label>
+<input type="text" class="form-control" id="postsubdes" name="postsubdes" placeholder="Enter title" required>
 </div>
 
 

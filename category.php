@@ -40,23 +40,16 @@ include('includes/config.php');
 
 
      
-      <div class="row" style="margin-top: 4%">
+      <div class="mainBody">
 
         <!-- Blog Entries Column -->
-        <div class="col-md-8">
+        <div class="left">
 
           <!-- Blog Post -->
 <?php 
         if($_GET['catid']!=''){
 $_SESSION['catid']=intval($_GET['catid']);
 }
-             
-
-
-
-
-
-
      if (isset($_GET['pageno'])) {
             $pageno = $_GET['pageno'];
         } else {
@@ -122,7 +115,10 @@ while ($row=mysqli_fetch_array($query)) {
         </div>
 
         <!-- Sidebar Widgets Column -->
-      <?php include('includes/sidebar.php');?>
+    <div class="right">
+        <?php include('includes/sidebar.php'); ?>
+    </div>
+
       </div>
       <!-- /.row -->
 

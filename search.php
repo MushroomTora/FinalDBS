@@ -39,10 +39,10 @@ include('includes/config.php');
 
 
      
-      <div class="row" style="margin-top: 4%">
+      <div class="mainBody">
 
         <!-- Blog Entries Column -->
-        <div class="col-md-8">
+        <div class="left">
 
           <!-- Blog Post -->
 <?php 
@@ -70,7 +70,7 @@ $st;
         $total_pages = ceil($total_rows / $no_of_records_per_page);
 
 
-$query=mysqli_query($con,"select tblposts.id as pid,tblposts.PostTitle as posttitle,tblcategory.CategoryName as category,tblsubcategory.Subcategory as subcategory,tblposts.PostDetails as postdetails,tblposts.PostingDate as postingdate,tblposts.PostUrl as url from tblposts left join tblcategory on tblcategory.id=tblposts.CategoryId left join  tblsubcategory on  tblsubcategory.SubCategoryId=tblposts.SubCategoryId where tblposts.PostTitle like '%$st%' and tblposts.Is_Active=1 LIMIT $offset, $no_of_records_per_page");
+$query=mysqli_query($con,"select tblposts.id as pid,tblposts.PostTitle as posttitle,tblposts.PostSubDes as postsubdes ,tblcategory.CategoryName as category,tblsubcategory.Subcategory as subcategory,tblposts.PostDetails as postdetails,tblposts.PostingDate as postingdate,tblposts.PostUrl as url from tblposts left join tblcategory on tblcategory.id=tblposts.CategoryId left join  tblsubcategory on  tblsubcategory.SubCategoryId=tblposts.SubCategoryId where tblposts.PostTitle like '%$st%' and tblposts.Is_Active=1 LIMIT $offset, $no_of_records_per_page");
 
 $rowcount=mysqli_num_rows($query);
 if($rowcount==0)
@@ -83,11 +83,11 @@ while ($row=mysqli_fetch_array($query)) {
 
 ?>
 
-          <div class="card mb-4">
+          <div>
       
             <div class="card-body">
               <h2 class="card-title"><?php echo htmlentities($row['posttitle']);?></h2>
-         
+              <p><?php echo htmlentities($row['postsubdes']);?></h2>
               <a href="news-details.php?nid=<?php echo htmlentities($row['pid'])?>" class="btn btn-primary">Read More &rarr;</a>
             </div>
             <div class="card-footer text-muted">
@@ -120,8 +120,10 @@ while ($row=mysqli_fetch_array($query)) {
         </div>
 
         <!-- Sidebar Widgets Column -->
-      <?php include('includes/sidebar.php');?>
-      </div>
+        <div class="right">
+              <?php include('includes/sidebar.php');?>
+        </div>
+              </div>
       <!-- /.row -->
 
     </div>

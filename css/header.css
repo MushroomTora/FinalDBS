@@ -146,6 +146,7 @@ h3{
     width: 75%;
     margin-top: 20px;
     margin-right: 16px;
+    margin-bottom: 16px;
 }
 .blogWrapper{
     width: 100%;
@@ -195,10 +196,10 @@ h3{
     color: #757B80;
 }
 
+
 /* Side Bar */
 .right{
     width: 30%;
-    margin-top: 20px;
 }
 .sideBar{
     border: 1px solid #757B80;
@@ -229,6 +230,14 @@ h3{
 }
 .recentNew hr{
     margin: 5px
+}
+
+.card-body ul{
+    padding-left: 0
+}
+
+.card-body li{
+    list-style: none
 }
 
 @media screen and (max-width: 1024px){

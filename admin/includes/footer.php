@@ -1,4 +1,4 @@
 
                 <footer class="footer text-right">
-                   Developed by DuongChungLinh 5C16 AIWFINAL.
+                   Developed by Team HHHL
                 </footer>
