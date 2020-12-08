@@ -45,16 +45,15 @@ include('includes/config.php');
         <!-- Blog Entries Column -->
         <div class="left">
             <div>
-            <h5>Categories</h5>
+            <h5> All Categories</h5>
             <div>
               <div>
                 <div>
                   <ul class="list-unstyled mb-0">
-<?php $query=mysqli_query($con,"select id,CategoryName from tblcategory");
-while($row=mysqli_fetch_array($query))
-{
-?>
-
+                        <?php $query=mysqli_query($con,"select id,CategoryName from tblcategory");
+                        while($row=mysqli_fetch_array($query))
+                        {
+                        ?>
                     <li>
                       <a href="category.php?catid=<?php echo htmlentities($row['id'])?>"><?php echo htmlentities($row['CategoryName']);?></a>
                     </li>

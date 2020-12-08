@@ -12,8 +12,22 @@ if(isset($_POST['submit']))
 {
 $category=$_POST['category'];
 $description=$_POST['description'];
+$categoryimgfile=$_FILES["categoryimage"]["name"];
+// get the image extension
+$extensionCategory = substr($categoryimgfile,strlen($categoryimgfile)-4,strlen($categoryimgfile));
+// allowed extensions
+$allowed_extensions_category = array(".jpg","jpeg",".png",".gif");
+// Validation for allowed extensions .in_array() function searches an array for a specific value.
+if(!in_array($extensionCategory,$allowed_extensions_category))
+{
+echo "<script>alert('Invalid format. Only jpg / jpeg/ png /gif format allowed');</script>";
+}else{
+    //rename the image file
+$categoryimgfile=md5($categoryimgfile).$extensionCategory;
+// Code for move image into directory
+move_uploaded_file($_FILES["categoryimage"]["tmp_name"],"categoryimage/".$categoryimgfile);
 $status=1;
-$query=mysqli_query($con,"insert into tblcategory(CategoryName,Description,Is_Active) values('$category','$description','$status')");
+$query=mysqli_query($con,"insert into tblcategory(CategoryName,Description, CategoryImage, Is_Active) values('$category','$description','$categoryimgfile','$status')");
 if($query)
 {
 $msg="Category created ";
@@ -22,7 +36,7 @@ else{
 $error="Something went wrong . Please try again.";    
 } 
 }
-
+}
 
 ?>
 
@@ -116,10 +130,6 @@ $error="Something went wrong . Please try again.";
 </div>
 </div>
 
-
-
-
-
                         			<div class="row">
                         				<div class="col-md-6">
                         					<form class="form-horizontal" name="category" method="post">
@@ -137,7 +147,7 @@ $error="Something went wrong . Please try again.";
 	                                                </div>
 	                                            </div>
 
-        <div class="form-group">
+                                     <div class="form-group">
                                                     <label class="col-md-2 control-label">&nbsp;</label>
                                                     <div class="col-md-10">
                                                   
@@ -152,16 +162,6 @@ $error="Something went wrong . Please try again.";
 
 
                         			</div>
-
-
-                        			
-
-
-
-
-           
-                       
-
 
                                 </div>
                             </div>

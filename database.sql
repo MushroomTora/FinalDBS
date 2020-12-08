@@ -69,7 +69,6 @@ INSERT INTO `tblcategory` (`id`, `CategoryName`, `Description`, `PostingDate`, `
 (5, 'Entertainment', 'Entertainment related  News', '2018-06-14 05:32:58', '2018-06-14 05:33:41', 1),
 (6, 'Politics', 'Politics', '2018-06-22 15:46:09', '0000-00-00 00:00:00', 1),
 (7, 'Business', 'Business', '2018-06-22 15:46:22', '0000-00-00 00:00:00', 1);
-
 -- --------------------------------------------------------
 
 --

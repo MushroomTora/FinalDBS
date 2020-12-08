@@ -43,6 +43,7 @@ include('includes/config.php');
 
         <!-- Blog Entries Column -->
         <div class="left">
+           <div class="blogWrapper">
 
           <!-- Blog Post -->
 <?php 
@@ -50,11 +51,6 @@ include('includes/config.php');
 $st=$_SESSION['searchtitle']=$_POST['searchtitle'];
 }
 $st;
-             
-
-
-
-
      if (isset($_GET['pageno'])) {
             $pageno = $_GET['pageno'];
         } else {
@@ -70,7 +66,7 @@ $st;
         $total_pages = ceil($total_rows / $no_of_records_per_page);
 
 
-$query=mysqli_query($con,"select tblposts.id as pid,tblposts.PostTitle as posttitle,tblposts.PostSubDes as postsubdes ,tblcategory.CategoryName as category,tblsubcategory.Subcategory as subcategory,tblposts.PostDetails as postdetails,tblposts.PostingDate as postingdate,tblposts.PostUrl as url from tblposts left join tblcategory on tblcategory.id=tblposts.CategoryId left join  tblsubcategory on  tblsubcategory.SubCategoryId=tblposts.SubCategoryId where tblposts.PostTitle like '%$st%' and tblposts.Is_Active=1 LIMIT $offset, $no_of_records_per_page");
+$query=mysqli_query($con,"select tblposts.id as pid,tblposts.PostTitle as posttitle,tblposts.PostSubDes as postsubdes ,tblcategory.CategoryName as category,tblsubcategory.Subcategory as subcategory,tblposts.PostImage, tblposts.PostDetails as postdetails,tblposts.PostingDate as postingdate,tblposts.PostUrl as url from tblposts left join tblcategory on tblcategory.id=tblposts.CategoryId left join  tblsubcategory on  tblsubcategory.SubCategoryId=tblposts.SubCategoryId where tblposts.PostTitle like '%$st%' and tblposts.Is_Active=1 LIMIT $offset, $no_of_records_per_page");
 
 $rowcount=mysqli_num_rows($query);
 if($rowcount==0)
@@ -83,41 +79,36 @@ while ($row=mysqli_fetch_array($query)) {
 
 ?>
 
-          <div>
-      
-            <div class="card-body">
-              <h2 class="card-title"><?php echo htmlentities($row['posttitle']);?></h2>
-              <p><?php echo htmlentities($row['postsubdes']);?></h2>
-              <a href="news-details.php?nid=<?php echo htmlentities($row['pid'])?>" class="btn btn-primary">Read More &rarr;</a>
+ <div class="blogPost">
+ <img class="card-img-top cardImage" src="admin/postimages/<?php echo htmlentities($row['PostImage']);?>" alt="<?php echo htmlentities($row['posttitle']);?>">
+    <p class="postDate">Posted on <?php echo htmlentities($row['postingdate']);?></p> 
+            <div class="cardBody">
+              <h2 class="cardTitle"><?php echo htmlentities($row['posttitle']);?></h2>
+                 <p><span style="font-weight: 500">Category : </span> <a class="categoryText" href="category.php?catid=<?php echo htmlentities($row['cid'])?>"><?php echo htmlentities($row['category']);?></a> </p>
+            <p><?php echo htmlentities($row['postsubdes']);?></p>
             </div>
-            <div class="card-footer text-muted">
-              Posted on <?php echo htmlentities($row['postingdate']);?>
-           
+            <div style="padding-bottom: 16px">
+              <a href="news-details.php?nid=<?php echo htmlentities($row['pid'])?>" class="readMoreText">Read More &rarr;</a>
             </div>
+
           </div>
 <?php } ?>
+</div>
 
     <ul class="pagination justify-content-center mb-4">
-        <li class="page-item"><a href="?pageno=1"  class="page-link">First</a></li>
+        <li class="page-item"><a style="color: #FF7A2F" href="?pageno=1"  class="page-link">First</a></li>
         <li class="<?php if($pageno <= 1){ echo 'disabled'; } ?> page-item">
             <a href="<?php if($pageno <= 1){ echo '#'; } else { echo "?pageno=".($pageno - 1); } ?>" class="page-link">Prev</a>
         </li>
         <li class="<?php if($pageno >= $total_pages){ echo 'disabled'; } ?> page-item">
             <a href="<?php if($pageno >= $total_pages){ echo '#'; } else { echo "?pageno=".($pageno + 1); } ?> " class="page-link">Next</a>
         </li>
-        <li class="page-item"><a href="?pageno=<?php echo $total_pages; ?>" class="page-link">Last</a></li>
+        <li class="page-item"><a style="color: #FF7A2F" href="?pageno=<?php echo $total_pages; ?>" class="page-link">Last</a></li>
     </ul>
 <?php } ?>
-       
-
-      
 
           <!-- Pagination -->
-
-
-
-
-        </div>
+       </div>
 
         <!-- Sidebar Widgets Column -->
         <div class="right">

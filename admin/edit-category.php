@@ -40,7 +40,7 @@ $error="Something went wrong . Please try again.";
         <link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
-		<link rel="stylesheet" href="../plugins/switchery/switchery.min.css">
+        <link rel="stylesheet" href="../plugins/switchery/switchery.min.css">
         <script src="assets/js/modernizr.min.js"></script>
 
     </head>
@@ -67,8 +67,8 @@ $error="Something went wrong . Please try again.";
 
 
                         <div class="row">
-							<div class="col-xs-12">
-								<div class="page-title-box">
+                            <div class="col-xs-12">
+                                <div class="page-title-box">
                                     <h4 class="page-title">Edit Category</h4>
                                     <ol class="breadcrumb p-0 m-0">
                                         <li>
@@ -83,8 +83,8 @@ $error="Something went wrong . Please try again.";
                                     </ol>
                                     <div class="clearfix"></div>
                                 </div>
-							</div>
-						</div>
+                            </div>
+                        </div>
                         <!-- end row -->
 
 
@@ -93,7 +93,7 @@ $error="Something went wrong . Please try again.";
                                 <div class="card-box">
                                     <h4 class="m-t-0 header-title"><b>Edit Category </b></h4>
                                     <hr />
-                        		
+                                
 
 
 <div class="row">
@@ -125,22 +125,22 @@ while($row=mysqli_fetch_array($query))
 
 
 
-                        			<div class="row">
-                        				<div class="col-md-6">
-                        					<form class="form-horizontal" name="category" method="post">
-	                                            <div class="form-group">
-	                                                <label class="col-md-2 control-label">Category</label>
-	                                                <div class="col-md-10">
-	                                                    <input type="text" class="form-control" value="<?php echo htmlentities($row['CategoryName']);?>" name="category" required>
-	                                                </div>
-	                                            </div>
-	                                     
-	                                            <div class="form-group">
-	                                                <label class="col-md-2 control-label">Category Description</label>
-	                                                <div class="col-md-10">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <form class="form-horizontal" name="category" method="post">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">Category</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" class="form-control" value="<?php echo htmlentities($row['CategoryName']);?>" name="category" required>
+                                                    </div>
+                                                </div>
+                                         
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">Category Description</label>
+                                                    <div class="col-md-10">
  <textarea class="form-control" rows="5" name="description" required><?php echo htmlentities($row['Description']);?></textarea>
-	                                                </div>
-	                                            </div>
+                                                    </div>
+                                                </div>
 <?php } ?>
         <div class="form-group">
                                                     <label class="col-md-2 control-label">&nbsp;</label>
@@ -152,14 +152,14 @@ while($row=mysqli_fetch_array($query))
                                                     </div>
                                                 </div>
 
-	                                        </form>
-                        				</div>
+                                            </form>
+                                        </div>
 
 
-                        			</div>
+                                    </div>
 
 
-                        			
+                                    
 
 
 
