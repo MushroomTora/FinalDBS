@@ -45,7 +45,9 @@ include('includes/config.php');
 
         <!-- Blog Entries Column -->
         <div class="left">
-
+<h1><?php echo htmlentities($row['category']);?> News</h1>
+<hr>
+<div class="blogWrapper">
 
           <!-- Blog Post -->
 <?php 
@@ -79,15 +81,7 @@ while ($row=mysqli_fetch_array($query)) {
 
 
 ?>
-  <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="index.php">Home</a>
-        </li>
-        <li class="breadcrumb-item active"><?php echo htmlentities($row['category']);?></li>
-      </ol>
-<h1><?php echo htmlentities($row['category']);?> News</h1>
-<hr>
-<div class="blogWrapper">
+
  <div class="blogPost">
  <img class="card-img-top cardImage" src="admin/postimages/<?php echo htmlentities($row['PostImage']);?>" alt="<?php echo htmlentities($row['posttitle']);?>">
     <p class="postDate">Posted on <?php echo htmlentities($row['postingdate']);?></p> 
