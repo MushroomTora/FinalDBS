@@ -61,12 +61,25 @@ h3{
     color: #fff !important;
     line-height: 45px;
     cursor: pointer;
+    padding: 0px 16px
 }
 .sub-items-link:hover{
     color: #fff;
 }
+.categoryToggledropBtn{
+    width: 100%;
+}
 .categoryToggleDropdownContent{
-    display: none
+    display: none;
+    background-color: #4F4F4F;
+    padding: 16px 16px 16px 5px;
+    width: 30%;
+    position: absolute;
+}
+
+.categoryToggleDropdownContent li a{
+    color: #fff;
+    margin-bottom: 16px;
 }
 .show{
     display: block;
@@ -379,5 +392,9 @@ h3{
 
     .sub-items-link {
         font-size: 14px;
+    }
+    .categoryToggleDropdownContent{
+        left: 0;
+        width: 100%;
     }
 }
