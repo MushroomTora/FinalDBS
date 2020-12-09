@@ -149,8 +149,8 @@ while($row=mysqli_fetch_array($query))
 <td><?php echo htmlentities($row['email']);?></td>
 <td><?php echo htmlentities($row['comment']);?></td>
 <td><?php $st=$row['status'];
-if($st=='0'):
-echo "Wating for approval";
+if($st == 0):
+echo "Pending";
 else:
 echo "Approved";
 endif;
@@ -160,7 +160,7 @@ endif;
 <td><a href="edit-post.php?pid=<?php echo htmlentities($row['postid']);?>"><?php echo htmlentities($row['PostTitle']);?></a> </td>
 <td><?php echo htmlentities($row['postingDate']);?></td>
 <td>
-<?php if($st=='0'):?>
+<?php if($st == 1):?>
     <a href="unapprove-comment.php?disid=<?php echo htmlentities($row['id']);?>" title="Disapprove this comment"><i class="ion-arrow-return-right" style="color: #29b6f6;"></i></a> 
 <?php else :?>
   <a href="unapprove-comment.php?appid=<?php echo htmlentities($row['id']);?>" title="Approve this comment"><i class="ion-arrow-return-right" style="color: #29b6f6;"></i></a> 
