@@ -276,7 +276,7 @@ h3{
     margin-bottom: 1.5rem!important;
     width: 46%;
     margin-left: 16px;
-    height: 520px;
+    height: 690px;
     border: 1px solid #dee2e6;
     padding-bottom: 16px;
     border-top-left-radius: calc(.25rem - 1px);
@@ -284,7 +284,7 @@ h3{
 }
 
 .blogPost .cardImage{
-    height: 200px;
+    height: 280px;
 }
 .cardBody{
     flex: 1 1 auto;
