@@ -31,14 +31,14 @@ h3{
 }
 
 .search{
-    height: 50px;
+    height: 45px;
     width: 50%;
     float: right;
 }
 .logo {
     height: 50px;
-    width: 50%;
-    float: left;
+    width: 100%;
+    text-align: center;
     line-height: 50px;
 }
 .logo a{
@@ -65,7 +65,12 @@ h3{
 .sub-items-link:hover{
     color: #fff;
 }
-
+.categoryToggleDropdownContent{
+    display: none
+}
+.show{
+    display: block;
+}
 .footer{
     height:100%;
     background-color: #4F4F4F;

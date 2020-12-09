@@ -36,6 +36,7 @@ if (isset($_POST['submit']) && !empty($_POST['csrftoken']) && hash_equals($_SESS
     <title>HandemadeTutorials | Home Page</title>
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/modern-business.css" rel="stylesheet">
+    <script src="js/toggleHeader.js"></script>
     <link href="css/component.css" rel="stylesheet">
     <link href="css/header.css" rel="stylesheet">
     <script src="js/modernizr.custom.js"></script>

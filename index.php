@@ -24,6 +24,7 @@ include('includes/config.php');
       <link href="css/component.css" rel="stylesheet">
       <link href="css/header.css" rel="stylesheet">
       <script src="js/modernizr.custom.js"></script>
+      <script src="js/toggleHeader.js"></script>
       <link href=" plugins/fontAwsome/otfs/Font Awesome 5 Brands-Regular-400.otf">
       <script src="https://kit.fontawesome.com/850f11ab6f.js" crossorigin="anonymous"></script>
 
